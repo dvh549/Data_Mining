@@ -12,8 +12,8 @@ imported = [[daily_import for daily_import in sg_data["Daily Imported"]]]
 local = [[daily_local for daily_local in sg_data["Daily Local transmission"]]]
 icu = [[daily_icu for daily_icu in sg_data["Intensive Care Unit (ICU)"]]]
 vaccination = [[daily_vacc if daily_vacc > 0 else 0 for daily_vacc in sg_data["Cumulative Individuals Vaccination Completed"]]]
-oxygen_supp = [[daily_oxy for daily_oxy in sg_data["Requires Oxygen Supplementation"]]]
-unlinked = [[daily_unlinked for daily_unlinked in sg_data["Unlinked community cases"]]]
+oxygen_supp = [[daily_oxy if daily_oxy > 0 else 0 for daily_oxy in sg_data["Requires Oxygen Supplementation"]]]
+unlinked = [[daily_unlinked if daily_unlinked > 0 else 0 for daily_unlinked in sg_data["Unlinked community cases"]]]
 
 imported_df = pd.DataFrame(imported, columns=dates, index=["Daily Imported"])
 local_df = pd.DataFrame(local, columns=dates, index=["Daily Local"])
